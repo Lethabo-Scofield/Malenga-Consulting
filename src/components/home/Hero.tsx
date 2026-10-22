@@ -11,7 +11,7 @@ export function Hero() {
   return (
     <section
       aria-labelledby="hero-title"
-      className="on-dark hero-cut relative flex min-h-[100svh] items-center bg-ink pb-28 pt-32 text-paper sm:pb-32"
+      className="hero-cut relative flex min-h-[100svh] items-center bg-white pb-28 pt-32 text-ink sm:pb-32"
     >
       <Container className="grid items-center gap-12 lg:grid-cols-12 lg:gap-8">
         <div className="lg:col-span-6">
@@ -22,13 +22,13 @@ export function Hero() {
           >
             We turn ideas into <em>reality.</em>
           </h1>
-          <p className="rise rise-2 mt-8 max-w-lg text-lg leading-relaxed text-paper/80 sm:text-xl">
+          <p className="rise rise-2 mt-8 max-w-lg text-lg leading-relaxed text-mute sm:text-xl">
             Malenga Consulting is a Sandton-based consulting company. We advise, we build, and we stay on to see
             the work through.
           </p>
           <div className="rise rise-3 mt-10 flex flex-col gap-4 sm:flex-row">
-            <ButtonLink href="/contact" variant="gold">Request a Consultation</ButtonLink>
-            <ButtonLink href="/services" variant="outlineLight">Explore Our Services</ButtonLink>
+            <ButtonLink href="/contact">Request a Consultation</ButtonLink>
+            <ButtonLink href="/services" variant="secondary">Explore Our Services</ButtonLink>
           </div>
         </div>
 
@@ -66,7 +66,7 @@ export function Hero() {
               </li>
             ))}
           </ul>
-          <p className="mt-5 text-xs uppercase tracking-[0.14em] text-paper/60">
+          <p className="mt-5 text-xs uppercase tracking-[0.14em] text-mute">
             Five divisions. Hover or tap a strip to explore.
           </p>
         </div>

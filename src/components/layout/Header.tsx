@@ -70,9 +70,6 @@ export function Header() {
     };
   }, [mobileOpen]);
 
-  // Over the photographic hero on the homepage the header is transparent with light text.
-  const onDark = pathname === "/" && !scrolled && !mobileOpen;
-
   const isActive = (href: string) => (href === "/" ? pathname === "/" : pathname.startsWith(href));
 
   const linkClass = (href: string) =>
@@ -84,7 +81,7 @@ export function Header() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
         scrolled || mobileOpen ? "border-b border-line bg-paper/95 backdrop-blur" : "bg-paper/0"
-      } ${onDark ? "text-paper" : "text-ink"}`}
+      } text-ink`}
     >
       <a
         href="#main"
@@ -93,7 +90,7 @@ export function Header() {
         Skip to content
       </a>
       <div className="mx-auto flex h-20 w-full max-w-[1280px] items-center justify-between px-5 sm:px-8 lg:px-12">
-        <Wordmark tone={onDark ? "paper" : "ink"} />
+        <Wordmark />
 
         <nav aria-label="Primary" className="hidden items-center gap-9 lg:flex">
           {navLinks.map((link) =>
@@ -170,7 +167,7 @@ export function Header() {
               </Link>
             ),
           )}
-          <ButtonLink href="/contact" variant={onDark ? "gold" : "primary"} className="!py-2.5">
+          <ButtonLink href="/contact" className="!py-2.5">
             Request a Consultation
           </ButtonLink>
         </nav>
