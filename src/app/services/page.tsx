@@ -19,7 +19,8 @@ export default function ServicesPage() {
     <>
       <PageHero
         eyebrow="Services"
-        title="Five consulting divisions, built around implementation."
+        title={<>Five consulting divisions, built around <em>implementation.</em></>}
+        image="port"
         intro="Each division combines advisory with hands-on support. Select a division to see the services we offer, the challenges we help with and how we work."
         crumbs={[{ label: "Home", href: "/" }, { label: "Services" }]}
       />

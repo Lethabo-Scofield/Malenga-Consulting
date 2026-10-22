@@ -1,5 +1,6 @@
 import { Section } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
+import { Photo } from "@/components/ui/Photo";
 import { TextLink } from "@/components/ui/Button";
 import { pillars } from "@/content/company";
 import { site } from "@/content/site";
@@ -7,31 +8,30 @@ import { site } from "@/content/site";
 export function AboutIntro() {
   return (
     <Section labelledBy="about-title">
-      <div className="grid gap-14 lg:grid-cols-2 lg:gap-24">
-        <Reveal>
+      <div className="grid items-center gap-14 lg:grid-cols-12 lg:gap-16">
+        <Reveal className="lg:col-span-6">
+          <Photo name="warehouseWalk" cut sizes="(min-width: 1024px) 560px, 100vw" className="aspect-[5/4]" />
+          <p className="mt-4 text-xs uppercase tracking-[0.14em] text-mute">On the ground, not just in the boardroom</p>
+        </Reveal>
+
+        <Reveal className="lg:col-span-5 lg:col-start-8" delay={0.08}>
           <p className="eyebrow">About Malenga</p>
-          <h2 id="about-title" className="display mt-5 text-[clamp(2rem,4.2vw,3.5rem)]">
-            Advice that goes beyond the report.
+          <h2 id="about-title" className="display mt-5 text-[clamp(2rem,4vw,3.25rem)]">
+            We don&rsquo;t stop at the <em>report.</em>
           </h2>
-          <p className="mt-8 max-w-lg text-lg leading-relaxed text-mute">
-            {site.description} We work with clients from first idea to working result, bringing strategy,
-            innovation and implementation together.
-          </p>
-          <div className="mt-8">
+          <p className="mt-6 text-lg leading-relaxed text-mute">{site.description}</p>
+          <div className="mt-9 space-y-5 border-l-2 border-accent-soft pl-6">
+            {pillars.map((p) => (
+              <p key={p.title} className="text-mute">
+                <strong className="display mr-2 text-xl font-normal text-ink">{p.title}.</strong>
+                {p.description}
+              </p>
+            ))}
+          </div>
+          <div className="mt-9">
             <TextLink href="/about">More about Malenga</TextLink>
           </div>
         </Reveal>
-
-        <dl className="border-t border-ink">
-          {pillars.map((p, i) => (
-            <Reveal key={p.title} delay={i * 0.06}>
-              <div className="grid gap-2 border-b border-line py-8 sm:grid-cols-[13rem_1fr] sm:gap-8">
-                <dt className="display text-3xl">{p.title}</dt>
-                <dd className="text-mute">{p.description}</dd>
-              </div>
-            </Reveal>
-          ))}
-        </dl>
       </div>
     </Section>
   );

@@ -48,6 +48,7 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
       <PageHero
         eyebrow={`Division ${service.number}`}
         title={service.title}
+        image={service.image}
         crumbs={[
           { label: "Home", href: "/" },
           { label: "Services", href: "/services" },

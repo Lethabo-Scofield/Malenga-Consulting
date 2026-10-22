@@ -8,7 +8,7 @@ export function Approach() {
       <Reveal className="max-w-3xl">
         <p className="eyebrow">Our approach</p>
         <h2 id="approach-title" className="display mt-5 text-[clamp(2rem,4.2vw,3.5rem)]">
-          A clear path from first conversation to lasting result.
+          How an engagement tends to <em>run.</em>
         </h2>
         <p className="mt-6 max-w-xl text-mute">
           A typical engagement may follow four stages. Each engagement is scoped with the client, so the

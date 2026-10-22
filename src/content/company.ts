@@ -63,21 +63,36 @@ export const aboutDraft = {
   ],
 };
 
+export type IndustrySlug =
+  | "logistics-transportation"
+  | "retail-distribution"
+  | "manufacturing"
+  | "smes"
+  | "startups-entrepreneurs"
+  | "educational-institutions"
+  | "public-sector"
+  | "non-profit"
+  | "technology-digital"
+  | "professional-services";
+
 export type Industry = {
+  slug: IndustrySlug;
   name: string;
   description: string;
+  /** Concrete areas where Malenga's capabilities may apply. */
+  help: string[];
   services: ServiceSlug[];
 };
 
 export const industries: Industry[] = [
-  { name: "Logistics and transportation", description: "Supply chain, fleet, distribution and operations advisory for organisations that move goods, with systems to support them.", services: ["transport-supply-chain", "it-software-development"] },
-  { name: "Retail and distribution", description: "Procurement, stock and warehouse practices, along with brand positioning and market insight for businesses that sell and deliver products.", services: ["transport-supply-chain", "strategy-marketing"] },
-  { name: "Manufacturing", description: "Sourcing, operations management and performance improvement, supported by process automation and information systems.", services: ["transport-supply-chain", "it-software-development"] },
-  { name: "SMEs", description: "Business planning, growth strategy, systems and leadership support for small and medium enterprises at each stage.", services: ["startup-business-development", "strategy-marketing"] },
-  { name: "Startups and entrepreneurs", description: "Registration guidance, business models, company profiles, coaching and early market entry for new ventures.", services: ["startup-business-development", "workshops-coaching-mentorship"] },
-  { name: "Educational institutions", description: "Workshops, leadership development and youth entrepreneurship programmes, plus information systems and web presence.", services: ["workshops-coaching-mentorship", "it-software-development"] },
-  { name: "Public sector organisations", description: "Operational improvement, strategic planning and capability building for public bodies delivering services.", services: ["strategy-marketing", "transport-supply-chain"] },
-  { name: "Non-profit organisations", description: "Strategic planning, programme design, digital presence and leadership support for mission-driven organisations.", services: ["strategy-marketing", "workshops-coaching-mentorship"] },
-  { name: "Technology and digital businesses", description: "Business development, positioning and go-to-market guidance, alongside software and systems delivery.", services: ["it-software-development", "startup-business-development"] },
-  { name: "Professional services", description: "Positioning, marketing, business development and internal systems for firms whose value is expertise.", services: ["strategy-marketing", "startup-business-development"] },
+  { slug: "logistics-transportation", name: "Logistics and transportation", description: "Organisations that move goods depend on planning, visibility and discipline. Our supply chain advisory pairs with systems work to keep operations running smoothly.", help: ["Route, fleet and distribution planning", "Warehouse and stock-control practices", "Systems that give you visibility of operations"], services: ["transport-supply-chain", "it-software-development"] },
+  { slug: "retail-distribution", name: "Retail and distribution", description: "From the supplier to the shelf, stock and sourcing decisions shape the business. We help tighten those processes and sharpen how the brand shows up.", help: ["Procurement and supplier sourcing", "Stock and warehouse processes", "Brand positioning and market research"], services: ["transport-supply-chain", "strategy-marketing"] },
+  { slug: "manufacturing", name: "Manufacturing", description: "Manufacturers need dependable inputs, efficient operations and information they can trust. We support the operational side and the systems behind it.", help: ["Sourcing and supply planning", "Operations and performance improvement", "Process automation and information systems"], services: ["transport-supply-chain", "it-software-development"] },
+  { slug: "smes", name: "SMEs", description: "Small and medium enterprises often outgrow the way they started. We help owners plan the next stage and build the structure to support it.", help: ["Business planning and growth strategy", "Systems and process automation", "Leadership coaching for owners and managers"], services: ["startup-business-development", "strategy-marketing"] },
+  { slug: "startups-entrepreneurs", name: "Startups and entrepreneurs", description: "Turning an idea into a business is the heart of what we do. We guide founders from registration and planning through to a first market approach.", help: ["Company registration guidance", "Business model and company profile development", "Mentorship through the first steps to market"], services: ["startup-business-development", "workshops-coaching-mentorship"] },
+  { slug: "educational-institutions", name: "Educational institutions", description: "Schools, colleges and training bodies can build enterprise skills and run better on the inside. We support both the programmes and the platforms.", help: ["Entrepreneurship and leadership workshops", "Youth entrepreneurship programmes", "Websites and information systems"], services: ["workshops-coaching-mentorship", "it-software-development"] },
+  { slug: "public-sector", name: "Public sector organisations", description: "Public bodies deliver services under real constraints. We help with planning, operations and the capability of the teams doing the work.", help: ["Operational and performance improvement", "Strategic planning facilitation", "Capability building for teams"], services: ["strategy-marketing", "transport-supply-chain"] },
+  { slug: "non-profit", name: "Non-profit organisations", description: "Mission-driven organisations need clear direction and a credible public presence. We help with both, and with developing the people who lead.", help: ["Strategic planning and organisational direction", "Digital presence and communications", "Leadership development and mentorship"], services: ["strategy-marketing", "workshops-coaching-mentorship"] },
+  { slug: "technology-digital", name: "Technology and digital businesses", description: "Good technology still needs a clear market position and a sound business behind it. We help with go-to-market thinking and with building the product.", help: ["Business development and positioning", "Market entry guidance", "Software and systems delivery"], services: ["it-software-development", "startup-business-development"] },
+  { slug: "professional-services", name: "Professional services", description: "For firms whose value is expertise, reputation and efficiency matter most. We help them present themselves well and run smoothly.", help: ["Brand positioning and marketing", "Business development support", "Internal systems and automation"], services: ["strategy-marketing", "startup-business-development"] },
 ];

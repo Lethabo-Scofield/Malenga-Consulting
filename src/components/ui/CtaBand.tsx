@@ -1,4 +1,5 @@
 import { Container } from "./Container";
+import { Photo } from "./Photo";
 import { ButtonLink, ExternalButton } from "./Button";
 import { Reveal } from "./Reveal";
 import { site, whatsappHref } from "@/content/site";
@@ -10,14 +11,16 @@ type Props = {
 };
 
 export function CtaBand({
-  title = "Let’s talk about what you want to build.",
-  text = "Tell us about your organisation and what you are working towards. We will respond to discuss how Malenga Consulting can help.",
+  title = "Got an idea that needs to become real?",
+  text = "Tell us what you are working towards. We will get back to you to talk through how Malenga Consulting can help.",
   serviceSlug,
 }: Props) {
   const href = serviceSlug ? `/contact?service=${serviceSlug}` : "/contact";
   return (
-    <section aria-labelledby="cta-title" className="on-dark bg-ink py-20 text-paper sm:py-28">
-      <Container>
+    <section aria-labelledby="cta-title" className="on-dark relative overflow-hidden bg-ink py-24 text-paper sm:py-32">
+      <Photo name="skylineDusk" sizes="100vw" tint={false} className="!absolute inset-0" />
+      <div aria-hidden="true" className="absolute inset-0 bg-ink/80" />
+      <Container className="relative">
         <Reveal>
           <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr] lg:items-end">
             <div>

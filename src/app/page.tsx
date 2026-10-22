@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/home/Hero";
+import { Statement } from "@/components/home/Statement";
+import { Clients } from "@/components/home/Clients";
 import { ServicesOverview } from "@/components/home/ServicesOverview";
 import { AboutIntro } from "@/components/home/AboutIntro";
 import { IndustriesSection } from "@/components/home/IndustriesSection";
@@ -22,9 +24,11 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <Statement />
       <ServicesOverview />
       <AboutIntro />
       <IndustriesSection />
+      <Clients />
       <WhyChoose />
       <Approach />
       <CtaBand />

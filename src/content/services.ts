@@ -1,3 +1,5 @@
+import type { PhotoKey } from "./images";
+
 export type ServiceSlug =
   | "transport-supply-chain"
   | "startup-business-development"
@@ -8,6 +10,9 @@ export type ServiceSlug =
 export type Service = {
   slug: ServiceSlug;
   number: string;
+  image: PhotoKey;
+  /** Very short plain-language summary for menus. */
+  blurb: string;
   /** Official division name. */
   title: string;
   /** One-line description for cards and lists. */
@@ -25,6 +30,8 @@ export const services: Service[] = [
   {
     slug: "transport-supply-chain",
     number: "01",
+    image: "supplyChain",
+    blurb: "Logistics, warehousing, procurement, fleet",
     title: "Transport and Supply Chain Management Consulting",
     short:
       "Practical advisory for organisations that move goods, hold stock and depend on dependable supply.",
@@ -69,6 +76,8 @@ export const services: Service[] = [
   {
     slug: "startup-business-development",
     number: "02",
+    image: "startup",
+    blurb: "Registration, planning, market entry, growth",
     title: "Startup and Business Development Consulting",
     short:
       "Guidance for entrepreneurs and growing businesses, from registration and planning to market entry and growth.",
@@ -114,6 +123,8 @@ export const services: Service[] = [
   {
     slug: "it-software-development",
     number: "03",
+    image: "software",
+    blurb: "Systems, software, automation, websites",
     title: "Information Technology and Software Development Solutions",
     short:
       "Business systems, software and digital solutions that support how your organisation actually works.",
@@ -158,6 +169,8 @@ export const services: Service[] = [
   {
     slug: "strategy-marketing",
     number: "04",
+    image: "strategy",
+    blurb: "Planning, brand, research, digital marketing",
     title: "Strategy and Marketing Consulting",
     short:
       "Strategic planning, brand positioning and marketing that give the business direction and visibility.",
@@ -202,6 +215,8 @@ export const services: Service[] = [
   {
     slug: "workshops-coaching-mentorship",
     number: "05",
+    image: "workshop",
+    blurb: "Leadership, coaching, mentorship, workshops",
     title: "Strategic Workshops, Coaching and Mentorship",
     short:
       "Facilitated workshops, coaching and mentorship that build leadership and entrepreneurial capability.",

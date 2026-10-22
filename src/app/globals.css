@@ -74,6 +74,31 @@ body {
     text-transform: uppercase;
     color: var(--accent);
   }
+  /* The logo's slanted stroke, used as a small marker. */
+  .eyebrow::before {
+    content: "";
+    display: inline-block;
+    width: 1.75rem;
+    height: 2px;
+    margin-right: 0.8rem;
+    vertical-align: middle;
+    background: currentColor;
+    transform: skewX(-38deg);
+  }
+  .display em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .on-dark .display em {
+    color: var(--accent-soft);
+  }
+  /* Bottom-left corner cut on the same angle as the logo's strokes. */
+  .photo-cut {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 18% 100%, 0 calc(100% - 3.5rem));
+  }
+  .hero-cut {
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 4.5rem), 0 100%);
+  }
   .on-dark .eyebrow {
     color: var(--accent-soft);
   }

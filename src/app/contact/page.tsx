@@ -27,7 +27,8 @@ export default async function ContactPage({ searchParams }: PageProps<"/contact"
     <>
       <PageHero
         eyebrow="Contact"
-        title="Request a consultation."
+        title={<>Request a <em>consultation.</em></>}
+        image="skylineDusk"
         intro="Tell us about your organisation and what you are working towards. We will respond to discuss how we can help."
         crumbs={[{ label: "Home", href: "/" }, { label: "Contact" }]}
       />

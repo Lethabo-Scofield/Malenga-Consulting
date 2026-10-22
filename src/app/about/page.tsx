@@ -22,7 +22,8 @@ export default function AboutPage() {
     <>
       <PageHero
         eyebrow="About Malenga Consulting"
-        title="Turning ideas into reality through strategy, innovation and implementation."
+        title={<>Turning ideas into reality through strategy, innovation and <em>implementation.</em></>}
+        image="sandton"
         crumbs={[{ label: "Home", href: "/" }, { label: "About" }]}
       />
 

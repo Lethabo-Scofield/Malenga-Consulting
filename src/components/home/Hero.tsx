@@ -1,92 +1,75 @@
-import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { ButtonLink } from "@/components/ui/Button";
+import { Photo } from "@/components/ui/Photo";
 import { services } from "@/content/services";
 
-/** Quiet line-work: a route threading five points, one per division. */
-function RouteLines() {
-  return (
-    <svg
-      aria-hidden="true"
-      viewBox="0 0 400 560"
-      preserveAspectRatio="xMaxYMid slice"
-      className="pointer-events-none absolute inset-0 h-full w-full text-accent-soft opacity-[0.25]"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1"
-    >
-      <path d="M-20 520 C 80 470, 120 380, 200 360 S 330 250, 420 120" />
-      <path d="M-20 440 C 60 400, 140 330, 210 300 S 340 190, 420 60" />
-      <path d="M40 580 C 90 480, 180 440, 250 380 S 350 300, 420 220" />
-      <circle cx="200" cy="360" r="3" fill="currentColor" />
-      <circle cx="300" cy="228" r="3" fill="currentColor" />
-      <circle cx="120" cy="404" r="3" fill="currentColor" />
-    </svg>
-  );
-}
+/** Constant-angle parallelogram, matching the slant of the logo's strokes. */
+const strip = { clipPath: "polygon(0 0, calc(100% - 34px) 0, 100% 100%, 34px 100%)" } as const;
 
 export function Hero() {
   return (
-    <section aria-labelledby="hero-title" className="bg-paper pt-28 sm:pt-32">
-      <Container className="grid items-stretch gap-12 pb-20 lg:grid-cols-[1.25fr_1fr] lg:gap-16 lg:pb-28">
-        <div className="flex flex-col justify-center py-8 lg:py-16">
+    <section
+      aria-labelledby="hero-title"
+      className="on-dark hero-cut relative flex min-h-[100svh] items-center bg-ink pb-28 pt-32 text-paper sm:pb-32"
+    >
+      <Container className="grid items-center gap-12 lg:grid-cols-12 lg:gap-8">
+        <div className="lg:col-span-6">
           <p className="eyebrow rise">Strategy · Innovation · Implementation</p>
           <h1
             id="hero-title"
-            className="display rise rise-1 mt-6 text-[clamp(3rem,7.4vw,6.4rem)]"
+            className="display rise rise-1 mt-6 text-[clamp(2.9rem,6.6vw,6rem)]"
           >
-            We Turn Ideas Into&nbsp;Reality.
+            We turn ideas into <em>reality.</em>
           </h1>
-          <p className="rise rise-2 mt-8 max-w-xl text-lg leading-relaxed text-mute sm:text-xl">
-            Malenga Consulting is a South African multidisciplinary consulting company. We combine strategic
-            advisory with hands-on implementation to support entrepreneurs, SMEs, corporations and institutions.
+          <p className="rise rise-2 mt-8 max-w-lg text-lg leading-relaxed text-paper/80 sm:text-xl">
+            Malenga Consulting is a Sandton-based consulting company. We advise, we build, and we stay on to see
+            the work through.
           </p>
           <div className="rise rise-3 mt-10 flex flex-col gap-4 sm:flex-row">
-            <ButtonLink href="/contact">Request a Consultation</ButtonLink>
-            <ButtonLink href="/services" variant="secondary">
-              Explore Our Services
-            </ButtonLink>
+            <ButtonLink href="/contact" variant="gold">Request a Consultation</ButtonLink>
+            <ButtonLink href="/services" variant="outlineLight">Explore Our Services</ButtonLink>
           </div>
         </div>
 
-        <aside
-          aria-label="Our five consulting divisions"
-          className="on-dark rise rise-2 relative overflow-hidden bg-charcoal p-7 text-paper sm:p-10"
-        >
-          <RouteLines />
-          <div className="relative">
-            <p className="eyebrow">Five divisions</p>
-            <ol className="mt-8 divide-y divide-line-dark border-y border-line-dark">
-              {services.map((s) => (
-                <li key={s.slug}>
-                  <Link
-                    href={`/services/${s.slug}`}
-                    className="group flex items-start gap-5 py-5 transition-colors"
-                  >
-                    <span className="display pt-0.5 text-lg tabular-nums text-accent-soft">{s.number}</span>
-                    <span className="flex-1 text-[0.95rem] leading-snug transition-transform duration-300 group-hover:translate-x-1">
-                      {s.title}
+        <div className="rise rise-2 lg:col-span-6">
+          <ul
+            aria-label="Our five consulting divisions"
+            className="flex h-[360px] sm:h-[480px] lg:h-[min(66vh,620px)]"
+          >
+            {services.map((s, i) => (
+              <li
+                key={s.slug}
+                style={strip}
+                className={`group relative min-w-0 flex-1 bg-charcoal transition-[flex-grow] duration-500 ease-out hover:flex-[2.8] focus-within:flex-[2.8] ${
+                  i > 0 ? "-ml-7" : ""
+                }`}
+              >
+                <Photo
+                  name={s.image}
+                  sizes="(min-width: 1024px) 360px, 50vw"
+                  priority={i < 2}
+                  className="!absolute inset-0 transition-transform duration-700 group-hover:scale-105"
+                />
+                <Link
+                  href={`/services/${s.slug}`}
+                  aria-label={`${s.title}: ${s.blurb}`}
+                  className="absolute inset-0 flex flex-col justify-end outline-offset-[-6px]"
+                >
+                  <span className="block bg-ink/85 pb-5 pl-11 pr-8 pt-3">
+                    <span className="display block text-3xl text-accent-soft">{s.number}</span>
+                    <span className="block max-h-0 overflow-hidden text-sm leading-snug opacity-0 transition-all duration-500 group-hover:mt-1 group-hover:max-h-24 group-hover:opacity-100 group-focus-within:mt-1 group-focus-within:max-h-24 group-focus-within:opacity-100">
+                      {s.title.replace(/ Consulting$/, "").replace(/ Solutions$/, "")}
                     </span>
-                    <ArrowUpRight
-                      aria-hidden="true"
-                      className="mt-1 size-4 shrink-0 text-mute-dark transition-colors group-hover:text-paper"
-                    />
-                  </Link>
-                </li>
-              ))}
-            </ol>
-            <Image
-              src="/brand/mark.png"
-              alt=""
-              aria-hidden="true"
-              width={480}
-              height={316}
-              className="mt-12 h-14 w-auto"
-            />
-          </div>
-        </aside>
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-5 text-xs uppercase tracking-[0.14em] text-paper/60">
+            Five divisions. Hover or tap a strip to explore.
+          </p>
+        </div>
       </Container>
     </section>
   );

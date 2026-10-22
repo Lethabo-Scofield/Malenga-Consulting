@@ -8,7 +8,7 @@ export function WhyChoose() {
       <Reveal className="max-w-3xl">
         <p className="eyebrow">Why Malenga</p>
         <h2 id="why-title" className="display mt-5 text-[clamp(2rem,4.2vw,3.5rem)]">
-          Why organisations choose to work with us.
+          What you get when you work with <em>Malenga.</em>
         </h2>
       </Reveal>
 

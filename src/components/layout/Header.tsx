@@ -3,11 +3,12 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { ArrowRight, ChevronDown, Menu, X } from "lucide-react";
 import { Wordmark } from "@/components/ui/Wordmark";
 import { ButtonLink } from "@/components/ui/Button";
 import { navLinks } from "@/content/company";
 import { services } from "@/content/services";
+import { serviceIcons } from "@/components/ui/icons";
 
 export function Header() {
   const pathname = usePathname();
@@ -69,6 +70,9 @@ export function Header() {
     };
   }, [mobileOpen]);
 
+  // Over the photographic hero on the homepage the header is transparent with light text.
+  const onDark = pathname === "/" && !scrolled && !mobileOpen;
+
   const isActive = (href: string) => (href === "/" ? pathname === "/" : pathname.startsWith(href));
 
   const linkClass = (href: string) =>
@@ -80,7 +84,7 @@ export function Header() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
         scrolled || mobileOpen ? "border-b border-line bg-paper/95 backdrop-blur" : "bg-paper/0"
-      }`}
+      } ${onDark ? "text-paper" : "text-ink"}`}
     >
       <a
         href="#main"
@@ -89,7 +93,7 @@ export function Header() {
         Skip to content
       </a>
       <div className="mx-auto flex h-20 w-full max-w-[1280px] items-center justify-between px-5 sm:px-8 lg:px-12">
-        <Wordmark />
+        <Wordmark tone={onDark ? "paper" : "ink"} />
 
         <nav aria-label="Primary" className="hidden items-center gap-9 lg:flex">
           {navLinks.map((link) =>
@@ -123,25 +127,40 @@ export function Header() {
                   </button>
                 </div>
                 {servicesOpen && (
-                  <div id="services-menu" className="absolute -left-6 top-full w-[26rem] pt-4">
-                    <ul className="border border-line bg-paper p-2 shadow-[0_18px_40px_-24px_rgb(0_0_0/0.35)]">
-                      {services.map((s) => (
-                        <li key={s.slug}>
-                          <Link
-                            href={`/services/${s.slug}`}
-                            className="group flex items-baseline gap-4 px-4 py-3 transition-colors hover:bg-stone"
-                          >
-                            <span className="text-xs tabular-nums text-accent">{s.number}</span>
-                            <span className="text-sm leading-snug">{s.title}</span>
-                          </Link>
-                        </li>
-                      ))}
-                      <li className="mt-1 border-t border-line">
-                        <Link href="/services" className="block px-4 py-3 text-sm font-medium transition-colors hover:bg-stone">
-                          View all services
-                        </Link>
-                      </li>
-                    </ul>
+                  <div id="services-menu" className="absolute -left-28 top-full w-[34rem] pt-4">
+                    <div className="border border-line bg-paper text-ink shadow-[0_18px_40px_-24px_rgb(6_19_63/0.45)]">
+                      <p className="border-b border-line px-5 py-3 text-xs uppercase tracking-[0.14em] text-mute">
+                        Our five divisions
+                      </p>
+                      <ul className="p-2">
+                        {services.map((s) => {
+                          const Icon = serviceIcons[s.slug];
+                          return (
+                            <li key={s.slug}>
+                              <Link
+                                href={`/services/${s.slug}`}
+                                className="group flex items-start gap-4 px-3 py-3 transition-colors hover:bg-stone"
+                              >
+                                <span className="flex size-10 shrink-0 items-center justify-center bg-ink text-accent-soft transition-colors group-hover:bg-accent-soft group-hover:text-ink">
+                                  <Icon aria-hidden="true" className="size-5" />
+                                </span>
+                                <span>
+                                  <span className="block text-sm font-medium leading-snug">{s.title}</span>
+                                  <span className="mt-0.5 block text-sm text-mute">{s.blurb}</span>
+                                </span>
+                              </Link>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                      <Link
+                        href="/services"
+                        className="group flex items-center justify-between border-t border-line px-5 py-3.5 text-sm font-medium transition-colors hover:bg-stone"
+                      >
+                        Compare all services
+                        <ArrowRight aria-hidden="true" className="size-4 transition-transform group-hover:translate-x-1" />
+                      </Link>
+                    </div>
                   </div>
                 )}
               </div>
@@ -151,7 +170,7 @@ export function Header() {
               </Link>
             ),
           )}
-          <ButtonLink href="/contact" className="!py-2.5">
+          <ButtonLink href="/contact" variant={onDark ? "gold" : "primary"} className="!py-2.5">
             Request a Consultation
           </ButtonLink>
         </nav>
@@ -190,17 +209,25 @@ export function Header() {
                   </button>
                   {mobileServicesOpen && (
                     <ul id="mobile-services" className="pb-4">
-                      {services.map((s) => (
-                        <li key={s.slug}>
-                          <Link href={`/services/${s.slug}`} className="flex gap-4 py-3 text-base">
-                            <span className="text-xs tabular-nums text-accent">{s.number}</span>
-                            {s.title}
-                          </Link>
-                        </li>
-                      ))}
+                      {services.map((s) => {
+                        const Icon = serviceIcons[s.slug];
+                        return (
+                          <li key={s.slug}>
+                            <Link href={`/services/${s.slug}`} className="flex items-start gap-4 py-3">
+                              <span className="flex size-10 shrink-0 items-center justify-center bg-ink text-accent-soft">
+                                <Icon aria-hidden="true" className="size-5" />
+                              </span>
+                              <span>
+                                <span className="block text-base font-medium leading-snug">{s.title}</span>
+                                <span className="mt-0.5 block text-sm text-mute">{s.blurb}</span>
+                              </span>
+                            </Link>
+                          </li>
+                        );
+                      })}
                       <li>
                         <Link href="/services" className="block py-3 text-base font-medium underline underline-offset-4">
-                          View all services
+                          Compare all services
                         </Link>
                       </li>
                     </ul>
