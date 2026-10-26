@@ -24,19 +24,19 @@ export const pillars = [
 ] as const;
 
 export const whyMalenga = [
-  { title: "Practical implementation", description: "Advice is only useful if it can be carried out. We stay involved from planning through to delivery." },
-  { title: "Multidisciplinary expertise", description: "Operations, business development, technology, strategy and capability building under one roof." },
-  { title: "Client-centred solutions", description: "Every engagement starts with your context and goals rather than a standard package." },
-  { title: "A focus on growth", description: "From first-time entrepreneurs to established organisations, we help clients build for what comes next." },
-  { title: "Professional service", description: "Clear communication, sensible scoping and respect for your time and information." },
+  { title: "Practical implementation", description: "We stay involved from plan to delivery." },
+  { title: "Multidisciplinary expertise", description: "Operations, business, technology and strategy under one roof." },
+  { title: "Client-centred solutions", description: "Built around your context, not a standard package." },
+  { title: "A focus on growth", description: "From first-time founders to established organisations." },
+  { title: "Professional service", description: "Clear communication and respect for your time." },
 ] as const;
 
 /** Proposed engagement journey as presented on the website. */
 export const approach = [
-  { step: "01", title: "Discovery", description: "We listen, ask questions and learn about your organisation, objectives and constraints." },
-  { step: "02", title: "Strategy", description: "We shape a clear, practical plan and agree priorities and scope with you." },
-  { step: "03", title: "Implementation", description: "We work with your team to put the plan into practice, step by step." },
-  { step: "04", title: "Support", description: "We remain available to refine, train and support as things develop." },
+  { step: "01", title: "Discovery", description: "We listen and learn your business." },
+  { step: "02", title: "Strategy", description: "We agree a practical plan and scope." },
+  { step: "03", title: "Implementation", description: "We put the plan into practice with your team." },
+  { step: "04", title: "Support", description: "We refine, train and support as you go." },
 ] as const;
 
 /* Wording below is derived from the brief and motto; confirm against the

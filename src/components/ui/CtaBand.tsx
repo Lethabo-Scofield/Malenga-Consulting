@@ -12,7 +12,7 @@ type Props = {
 
 export function CtaBand({
   title = "Got an idea that needs to become real?",
-  text = "Tell us what you are working towards. We will get back to you to talk through how Malenga Consulting can help.",
+  text,
   serviceSlug,
 }: Props) {
   const href = serviceSlug ? `/contact?service=${serviceSlug}` : "/contact";
@@ -24,9 +24,8 @@ export function CtaBand({
         <Reveal>
           <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr] lg:items-end">
             <div>
-              <p className="eyebrow">Get in touch</p>
-              <h2 id="cta-title" className="display mt-5 text-[clamp(2rem,4.5vw,3.75rem)]">{title}</h2>
-              <p className="mt-6 max-w-xl text-lg text-mute-dark">{text}</p>
+              <h2 id="cta-title" className="display text-[clamp(2rem,4.5vw,3.75rem)]">{title}</h2>
+              {text && <p className="mt-6 max-w-xl text-lg text-mute-dark">{text}</p>}
             </div>
             <div className="flex flex-col gap-4 sm:flex-row lg:flex-col">
               <ButtonLink href={href} variant="gold">Request a Consultation</ButtonLink>

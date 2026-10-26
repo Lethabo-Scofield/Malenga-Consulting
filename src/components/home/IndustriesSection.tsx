@@ -9,15 +9,10 @@ export function IndustriesSection() {
     <Section tone="ink" labelledBy="industries-title">
       <div className="grid items-center gap-14 lg:grid-cols-12 lg:gap-16">
         <Reveal className="lg:col-span-5">
-          <p className="eyebrow">Industries we serve</p>
-          <h2 id="industries-title" className="display mt-5 text-[clamp(2rem,4vw,3.4rem)]">
+          <h2 id="industries-title" className="display text-[clamp(2rem,4vw,3.4rem)]">
             From the loading dock to the <em>boardroom.</em>
           </h2>
-          <p className="mt-6 max-w-sm text-mute-dark">
-            Wherever an organisation needs clearer direction, steadier operations or better systems, the same
-            joined-up thinking applies.
-          </p>
-          <ul className="mt-9 grid gap-x-6 gap-y-3 text-[0.95rem] sm:grid-cols-2">
+          <ul className="mt-8 grid gap-x-6 gap-y-3 text-[0.95rem] sm:grid-cols-2">
             {industries.map((ind) => (
               <li key={ind.name} className="flex gap-3">
                 <span aria-hidden="true" className="mt-2.5 h-0.5 w-3 shrink-0 -skew-x-[38deg] bg-accent-soft" />

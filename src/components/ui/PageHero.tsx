@@ -6,7 +6,7 @@ import type { PhotoKey } from "@/content/images";
 type Crumb = { label: string; href?: string };
 
 type Props = {
-  eyebrow: string;
+  eyebrow?: string;
   /** Plain string, or JSX when part of the title should be emphasised with <em>. */
   title: React.ReactNode;
   intro?: string;
@@ -37,8 +37,8 @@ export function PageHero({ eyebrow, title, intro, crumbs, image }: Props) {
               </ol>
             </nav>
           )}
-          <p className="eyebrow rise">{eyebrow}</p>
-          <h1 className="display rise rise-1 mt-5 max-w-4xl text-[clamp(2.3rem,5vw,4.4rem)]">{title}</h1>
+          {eyebrow && <p className="eyebrow rise">{eyebrow}</p>}
+          <h1 className="display rise rise-1 max-w-4xl text-[clamp(2.3rem,5vw,4.4rem)]">{title}</h1>
           {intro && <p className="rise rise-2 mt-8 max-w-2xl text-lg leading-relaxed text-mute">{intro}</p>}
         </div>
         {image && (

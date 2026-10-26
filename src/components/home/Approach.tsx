@@ -6,14 +6,9 @@ export function Approach() {
   return (
     <Section tone="stone" labelledBy="approach-title">
       <Reveal className="max-w-3xl">
-        <p className="eyebrow">Our approach</p>
-        <h2 id="approach-title" className="display mt-5 text-[clamp(2rem,4.2vw,3.5rem)]">
+        <h2 id="approach-title" className="display text-[clamp(2rem,4.2vw,3.5rem)]">
           How an engagement tends to <em>run.</em>
         </h2>
-        <p className="mt-6 max-w-xl text-mute">
-          A typical engagement may follow four stages. Each engagement is scoped with the client, so the
-          emphasis and duration of each stage will vary.
-        </p>
       </Reveal>
 
       <ol className="relative mt-16 grid gap-10 md:grid-cols-4 md:gap-8">

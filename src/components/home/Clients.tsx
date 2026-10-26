@@ -6,8 +6,7 @@ export function Clients() {
   return (
     <Section tone="stone" labelledBy="clients-title" className="!py-16 sm:!py-24">
       <Reveal>
-        <p className="eyebrow">Businesses we&rsquo;ve worked with</p>
-        <h2 id="clients-title" className="sr-only">Businesses we&rsquo;ve worked with</h2>
+        <h2 id="clients-title" className="eyebrow">Businesses we&rsquo;ve worked with</h2>
         <ul className="mt-8 flex flex-col divide-y divide-line border-y border-line md:flex-row md:divide-x md:divide-y-0">
           {clients.map((name) => (
             <li

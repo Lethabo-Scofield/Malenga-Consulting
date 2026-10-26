@@ -5,7 +5,7 @@ import { Photo } from "@/components/ui/Photo";
 import { services } from "@/content/services";
 
 /** Constant-angle parallelogram, matching the slant of the logo's strokes. */
-const strip = { clipPath: "polygon(0 0, calc(100% - 34px) 0, 100% 100%, 34px 100%)" } as const;
+const strip = { clipPath: "polygon(0 0, calc(100% - var(--slant)) 0, 100% 100%, var(--slant) 100%)" } as const;
 
 export function Hero() {
   return (
@@ -15,16 +15,14 @@ export function Hero() {
     >
       <Container className="grid items-center gap-12 lg:grid-cols-12 lg:gap-8">
         <div className="lg:col-span-6">
-          <p className="eyebrow rise">Strategy · Innovation · Implementation</p>
           <h1
             id="hero-title"
-            className="display rise rise-1 mt-6 text-[clamp(2.9rem,6.6vw,6rem)]"
+            className="display rise rise-1 text-[clamp(2.9rem,6.6vw,6rem)]"
           >
             We turn ideas into <em>reality.</em>
           </h1>
-          <p className="rise rise-2 mt-8 max-w-lg text-lg leading-relaxed text-mute sm:text-xl">
-            Malenga Consulting is a Sandton-based consulting company. We advise, we build, and we stay on to see
-            the work through.
+          <p className="rise rise-2 mt-7 max-w-md text-lg text-mute sm:text-xl">
+            Sandton-based consulting. We advise, we build, and we see it through.
           </p>
           <div className="rise rise-3 mt-10 flex flex-col gap-4 sm:flex-row">
             <ButtonLink href="/contact">Request a Consultation</ButtonLink>
@@ -35,14 +33,14 @@ export function Hero() {
         <div className="rise rise-2 lg:col-span-6">
           <ul
             aria-label="Our five consulting divisions"
-            className="flex h-[360px] sm:h-[480px] lg:h-[min(66vh,620px)]"
+            className="flex h-[340px] [--slant:12px] sm:h-[480px] sm:[--slant:26px] lg:h-[min(66vh,620px)] lg:[--slant:34px]"
           >
             {services.map((s, i) => (
               <li
                 key={s.slug}
                 style={strip}
                 className={`group relative min-w-0 flex-1 bg-charcoal transition-[flex-grow] duration-500 ease-out hover:flex-[2.8] focus-within:flex-[2.8] ${
-                  i > 0 ? "-ml-7" : ""
+                  i > 0 ? "-ml-[calc(var(--slant)-4px)]" : ""
                 }`}
               >
                 <Photo
@@ -56,8 +54,8 @@ export function Hero() {
                   aria-label={`${s.title}: ${s.blurb}`}
                   className="absolute inset-0 flex flex-col justify-end outline-offset-[-6px]"
                 >
-                  <span className="block bg-ink/85 pb-5 pl-11 pr-8 pt-3">
-                    <span className="display block text-3xl text-accent-soft">{s.number}</span>
+                  <span className="block bg-ink/85 pb-4 pl-4 pr-3 pt-3 sm:pb-5 sm:pl-11 sm:pr-8">
+                    <span className="display block text-2xl text-accent-soft sm:text-3xl">{s.number}</span>
                     <span className="block max-h-0 overflow-hidden text-sm leading-snug opacity-0 transition-all duration-500 group-hover:mt-1 group-hover:max-h-24 group-hover:opacity-100 group-focus-within:mt-1 group-focus-within:max-h-24 group-focus-within:opacity-100">
                       {s.title.replace(/ Consulting$/, "").replace(/ Solutions$/, "")}
                     </span>
@@ -66,9 +64,6 @@ export function Hero() {
               </li>
             ))}
           </ul>
-          <p className="mt-5 text-xs uppercase tracking-[0.14em] text-mute">
-            Five divisions. Hover or tap a strip to explore.
-          </p>
         </div>
       </Container>
     </section>

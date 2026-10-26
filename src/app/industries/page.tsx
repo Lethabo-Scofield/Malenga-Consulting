@@ -22,10 +22,9 @@ export default function IndustriesPage() {
   return (
     <>
       <PageHero
-        eyebrow="Industries"
         title={<>Capabilities that apply across <em>sectors.</em></>}
         image="truckYard"
-        intro="Our multidisciplinary approach lets us support a wide range of organisations. Find your sector below to see how our capabilities may apply."
+        intro="Find your sector to see where we can help."
         crumbs={[{ label: "Home", href: "/" }, { label: "Industries" }]}
       />
 
@@ -70,9 +69,7 @@ export default function IndustriesPage() {
                   </div>
 
                   <div className="lg:col-span-8">
-                    <p className="max-w-2xl text-lg leading-relaxed text-mute">{ind.description}</p>
-
-                    <div className="mt-8 grid gap-8 md:grid-cols-2">
+                    <div className="grid gap-8 md:grid-cols-2">
                       <div>
                         <p className="eyebrow">Where we can help</p>
                         <ul className="mt-4 space-y-3">
@@ -118,7 +115,6 @@ export default function IndustriesPage() {
 
       <CtaBand
         title="Working in a sector not listed?"
-        text="We work with many kinds of organisations. Tell us about yours and we will talk through how we can help."
       />
     </>
   );

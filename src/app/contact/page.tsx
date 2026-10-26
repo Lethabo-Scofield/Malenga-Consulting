@@ -26,26 +26,23 @@ export default async function ContactPage({ searchParams }: PageProps<"/contact"
   return (
     <>
       <PageHero
-        eyebrow="Contact"
         title={<>Request a <em>consultation.</em></>}
         image="skylineDusk"
-        intro="Tell us about your organisation and what you are working towards. We will respond to discuss how we can help."
         crumbs={[{ label: "Home", href: "/" }, { label: "Contact" }]}
       />
 
       <Section className="!pt-14 sm:!pt-20">
         <div className="grid gap-16 lg:grid-cols-[1.25fr_1fr] lg:gap-24">
           <div>
-            <h2 className="display text-[clamp(1.6rem,3vw,2.25rem)]">Send an enquiry</h2>
-            <p className="mt-3 text-mute">Fields marked optional can be left blank.</p>
-            <div className="mt-10">
+            <h2 className="sr-only">Send an enquiry</h2>
+            <div>
               <ContactForm defaultService={service} />
             </div>
           </div>
 
           <aside aria-label="Company contact details" className="lg:pt-2">
-            <h2 className="display text-[clamp(1.6rem,3vw,2.25rem)]">Contact details</h2>
-            <ul className="mt-10 border-t border-ink">
+            <h2 className="sr-only">Contact details</h2>
+            <ul className="border-t border-ink">
               {rows.map(({ icon: Icon, label, value, href }) => (
                 <li key={label} className="border-b border-line">
                   <a href={href} className="group flex items-center gap-5 py-5">

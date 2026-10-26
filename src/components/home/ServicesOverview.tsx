@@ -10,14 +10,9 @@ export function ServicesOverview() {
   return (
     <Section tone="stone" labelledBy="services-title">
       <Reveal className="max-w-3xl">
-        <p className="eyebrow">What we do</p>
-        <h2 id="services-title" className="display mt-5 text-[clamp(2.1rem,4.4vw,3.6rem)]">
+        <h2 id="services-title" className="display text-[clamp(2.1rem,4.4vw,3.6rem)]">
           Five ways we put ideas to <em>work.</em>
         </h2>
-        <p className="mt-6 max-w-lg text-mute">
-          Each division stands on its own, and they work well together. Start with the one that matches the
-          problem in front of you.
-        </p>
       </Reveal>
 
       <div className="mt-16 space-y-16 sm:space-y-24">
@@ -40,14 +35,12 @@ export function ServicesOverview() {
                   />
                 </Link>
                 <div className={`lg:col-span-5 ${flip ? "lg:order-1 lg:col-start-2" : "lg:col-start-8"}`}>
-                  <p className="eyebrow">Division {s.number}</p>
-                  <h3 className="display mt-4 text-[clamp(1.7rem,2.8vw,2.4rem)] leading-tight">
+                  <h3 className="display text-[clamp(1.7rem,2.8vw,2.4rem)] leading-tight">
                     <Link href={`/services/${s.slug}`} className="hover:text-accent">
                       {s.title}
                     </Link>
                   </h3>
-                  <p className="mt-4 max-w-md text-mute">{s.short}</p>
-                  <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-1.5 text-sm text-mute">
+                  <ul className="mt-6 flex flex-wrap gap-x-5 gap-y-1.5 text-sm text-mute">
                     {s.offerings.slice(0, 4).map((o) => (
                       <li key={o.title} className="flex items-center gap-2">
                         <span aria-hidden="true" className="h-0.5 w-2.5 shrink-0 -skew-x-[38deg] bg-accent" />

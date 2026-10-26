@@ -78,9 +78,14 @@ export function Header() {
     }`;
 
   return (
+    <>
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-        scrolled || mobileOpen ? "border-b border-line bg-paper/95 backdrop-blur" : "bg-paper/0"
+        mobileOpen
+          ? "border-b border-line bg-paper"
+          : scrolled
+            ? "border-b border-line bg-paper/95 backdrop-blur"
+            : "bg-paper/0"
       } text-ink`}
     >
       <a
@@ -184,9 +189,12 @@ export function Header() {
           {mobileOpen ? <X className="size-6" aria-hidden="true" /> : <Menu className="size-6" aria-hidden="true" />}
         </button>
       </div>
+    </header>
 
-      {mobileOpen && (
-        <div id="mobile-menu" className="fixed inset-x-0 bottom-0 top-20 overflow-y-auto bg-paper lg:hidden">
+    {/* Sibling of the header, not a child: the header's backdrop-filter would otherwise
+        become the containing block for this fixed panel and collapse it to 80px tall. */}
+    {mobileOpen && (
+        <div id="mobile-menu" className="fixed inset-x-0 bottom-0 top-20 z-40 overflow-y-auto overscroll-contain bg-paper lg:hidden">
           <nav aria-label="Mobile" className="mx-auto flex max-w-[1280px] flex-col px-5 pb-12 pt-4 sm:px-8">
             {navLinks.map((link) =>
               link.label === "Services" ? (
@@ -247,6 +255,6 @@ export function Header() {
           </nav>
         </div>
       )}
-    </header>
+    </>
   );
 }
