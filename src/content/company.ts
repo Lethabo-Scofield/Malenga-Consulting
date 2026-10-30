@@ -31,9 +31,8 @@ export const whyMalenga = [
   { title: "Professional service", description: "Clear communication and respect for your time." },
 ] as const;
 
-/* Wording below is derived from the brief and motto; confirm against the
-   official company profile before removing the draft labels. */
-export const aboutDraft = {
+/** About page copy, approved by the company. */
+export const aboutContent = {
   overview: [
     "Malenga Consulting is a South African multidisciplinary consulting company. We provide strategic advisory, operational implementation, business development support and technology-driven solutions to entrepreneurs, startups, SMEs, corporations and institutions.",
     "Our work spans five divisions: transport and supply chain management, startup and business development, information technology and software development, strategy and marketing, and strategic workshops, coaching and mentorship.",

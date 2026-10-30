@@ -28,12 +28,6 @@ export const site = {
     number: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "27824458568",
     message: "Hello Malenga Consulting, I would like to make an enquiry.",
   },
-
-  /**
-   * Sections whose wording is not yet confirmed against the official company
-   * profile carry a small "draft" tag. Set to false once the client approves.
-   */
-  showDraftLabels: true,
 } as const;
 
 export const whatsappHref = `https://wa.me/${site.whatsapp.number}?text=${encodeURIComponent(

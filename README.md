@@ -25,9 +25,9 @@ src/
     layout/            Header (desktop + mobile nav), Footer
     home/              Homepage sections
     contact/           Enquiry form
-    ui/                Container/Section, Button, Reveal (motion), Wordmark, PageHero, CtaBand, DraftTag
+    ui/                Container/Section, Button, Reveal (motion), Wordmark, PageHero, CtaBand
   content/             All copy and company data, kept separate from components (CMS-ready)
-    site.ts            Name, URLs, contact details, WhatsApp number, draft-label switch
+    site.ts            Name, URLs, contact details, WhatsApp number
     services.ts        The five divisions: offerings, challenges, support, audiences, related
     company.ts         Navigation, values, approach, industries, About copy
   lib/                 seo.ts (metadata + JSON-LD), contact-schema.ts (shared Zod schema),
@@ -60,6 +60,7 @@ Without either configured, the form reports that it is temporarily unavailable a
 
 ## Before launch
 
-See the "Needs client input" list handed over with this build. In short: the company profile wording behind the
-draft-labelled About text, the official logo and brand colours, licensed photography, and email credentials.
-Set `showDraftLabels` to `false` in `src/content/site.ts` once the About wording is approved.
+Still needed from the client: email credentials (see `.env.example`), the Founder & CEO's name
+(`src/content/team.ts`), the group team photo (`public/team/team.jpg`), and confirmation of the official brand
+colours. Photography is from Unsplash (see `public/photos/SOURCES.md`); replace it with the client's own when
+available.

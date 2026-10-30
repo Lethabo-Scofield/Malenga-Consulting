@@ -4,8 +4,7 @@ import { PageHero } from "@/components/ui/PageHero";
 import { Section } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { CtaBand } from "@/components/ui/CtaBand";
-import { DraftTag } from "@/components/ui/DraftTag";
-import { aboutDraft, values } from "@/content/company";
+import { aboutContent, values } from "@/content/company";
 import { mapHref, site } from "@/content/site";
 import { buildMetadata } from "@/lib/seo";
 
@@ -31,10 +30,9 @@ export default function AboutPage() {
         <div className="grid gap-10 lg:grid-cols-[1fr_1.6fr] lg:gap-24">
           <Reveal>
             <h2 id="overview-title" className="display text-[clamp(1.8rem,3.4vw,2.75rem)]">Who we are</h2>
-            <div className="mt-5"><DraftTag /></div>
           </Reveal>
           <Reveal delay={0.08}>
-            <p className="display text-[clamp(1.4rem,2.4vw,2rem)] leading-snug">{aboutDraft.overview[0]}</p>
+            <p className="display text-[clamp(1.4rem,2.4vw,2rem)] leading-snug">{aboutContent.overview[0]}</p>
           </Reveal>
         </div>
       </Section>
@@ -46,13 +44,12 @@ export default function AboutPage() {
         <h2 id="vm-title" className="sr-only">Vision and mission</h2>
         <div className="grid gap-14 md:grid-cols-2 md:gap-20">
           {[
-            { label: "Vision", text: aboutDraft.vision },
-            { label: "Mission", text: aboutDraft.mission },
+            { label: "Vision", text: aboutContent.vision },
+            { label: "Mission", text: aboutContent.mission },
           ].map((b, i) => (
             <Reveal key={b.label} delay={i * 0.08}>
               <h3 className="eyebrow">{b.label}</h3>
               <p className="display mt-5 text-[clamp(1.5rem,2.8vw,2.25rem)] leading-snug">{b.text}</p>
-              <div className="mt-6 text-mute-dark"><DraftTag /></div>
             </Reveal>
           ))}
         </div>
@@ -78,14 +75,12 @@ export default function AboutPage() {
         <div className="grid gap-16 lg:grid-cols-2 lg:gap-24">
           <Reveal>
             <h2 id="philosophy-title" className="display text-[clamp(1.8rem,3.4vw,2.75rem)]">Consulting philosophy</h2>
-            <div className="mt-5"><DraftTag /></div>
-            <p className="mt-8 text-lg leading-relaxed text-mute">{aboutDraft.philosophy[0]}</p>
+            <p className="mt-8 text-lg leading-relaxed text-mute">{aboutContent.philosophy[0]}</p>
           </Reveal>
           <Reveal delay={0.08}>
             <h2 className="display text-[clamp(1.8rem,3.4vw,2.75rem)]">Strategic objectives</h2>
-            <div className="mt-5"><DraftTag /></div>
             <ol className="mt-8 border-t border-ink">
-              {aboutDraft.objectives.map((o, i) => (
+              {aboutContent.objectives.map((o, i) => (
                 <li key={o} className="grid grid-cols-[2.5rem_1fr] border-b border-line py-4">
                   <span className="display text-lg tabular-nums text-accent">{i + 1}</span>
                   <span>{o}</span>
