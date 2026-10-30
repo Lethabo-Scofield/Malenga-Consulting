@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Section } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { clients } from "@/content/clients";
@@ -7,13 +8,24 @@ export function Clients() {
     <Section tone="stone" labelledBy="clients-title" className="!py-16 sm:!py-24">
       <Reveal>
         <h2 id="clients-title" className="eyebrow">Businesses we&rsquo;ve worked with</h2>
-        <ul className="mt-8 flex flex-col divide-y divide-line border-y border-line md:flex-row md:divide-x md:divide-y-0">
-          {clients.map((name) => (
+        <ul className="mt-8 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+          {clients.map((c) => (
             <li
-              key={name}
-              className="display flex-1 px-0 py-7 text-[clamp(1.5rem,2.4vw,2.1rem)] leading-tight md:px-8 md:first:pl-0 md:last:pr-0"
+              key={c.name}
+              className="flex h-32 items-center justify-center border border-line bg-white p-5 sm:h-40 sm:p-7"
             >
-              {name}
+              {c.logo ? (
+                <Image
+                  src={c.logo.src}
+                  alt={c.name}
+                  width={c.logo.width}
+                  height={c.logo.height}
+                  sizes="(min-width: 1024px) 240px, 45vw"
+                  className="h-auto max-h-full w-auto max-w-full object-contain"
+                />
+              ) : (
+                <span className="display text-center text-[clamp(1.5rem,2.4vw,2rem)] leading-tight">{c.name}</span>
+              )}
             </li>
           ))}
         </ul>

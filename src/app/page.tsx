@@ -6,7 +6,6 @@ import { ServicesOverview } from "@/components/home/ServicesOverview";
 import { AboutIntro } from "@/components/home/AboutIntro";
 import { IndustriesSection } from "@/components/home/IndustriesSection";
 import { WhyChoose } from "@/components/home/WhyChoose";
-import { Approach } from "@/components/home/Approach";
 import { CtaBand } from "@/components/ui/CtaBand";
 import { buildMetadata } from "@/lib/seo";
 import { site } from "@/content/site";
@@ -30,7 +29,6 @@ export default function HomePage() {
       <IndustriesSection />
       <Clients />
       <WhyChoose />
-      <Approach />
       <CtaBand />
     </>
   );

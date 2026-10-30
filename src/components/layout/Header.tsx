@@ -2,13 +2,20 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { ArrowRight, ChevronDown, Menu, X } from "lucide-react";
 import { Wordmark } from "@/components/ui/Wordmark";
 import { ButtonLink } from "@/components/ui/Button";
 import { navLinks } from "@/content/company";
 import { services } from "@/content/services";
 import { serviceIcons } from "@/components/ui/icons";
+
+/** Subscribes to scroll so the header can switch style; also correct on first render mid-page. */
+const subscribeToScroll = (onChange: () => void) => {
+  window.addEventListener("scroll", onChange, { passive: true });
+  return () => window.removeEventListener("scroll", onChange);
+};
+const isScrolled = () => window.scrollY > 8;
 
 export function Header() {
   const pathname = usePathname();
@@ -28,7 +35,7 @@ export function Header() {
     [pathname],
   );
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const scrolled = useSyncExternalStore(subscribeToScroll, isScrolled, () => false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
 
@@ -36,12 +43,6 @@ export function Header() {
     setMobileOpen(false);
     setServicesOpen(false);
   }, [setMobileOpen, setServicesOpen]);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   // Escape closes menus; outside click closes the dropdown.
   useEffect(() => {
@@ -97,7 +98,7 @@ export function Header() {
       <div className="mx-auto flex h-20 w-full max-w-[1280px] items-center justify-between px-5 sm:px-8 lg:px-12">
         <Wordmark />
 
-        <nav aria-label="Primary" className="hidden items-center gap-9 lg:flex">
+        <nav aria-label="Primary" className="hidden items-center gap-8 xl:flex">
           {navLinks.map((link) =>
             link.label === "Services" ? (
               <div
@@ -180,7 +181,7 @@ export function Header() {
         <button
           ref={menuButtonRef}
           type="button"
-          className="-mr-2 p-2 lg:hidden"
+          className="-mr-2 p-2 xl:hidden"
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileOpen}
           aria-controls="mobile-menu"
@@ -194,7 +195,7 @@ export function Header() {
     {/* Sibling of the header, not a child: the header's backdrop-filter would otherwise
         become the containing block for this fixed panel and collapse it to 80px tall. */}
     {mobileOpen && (
-        <div id="mobile-menu" className="fixed inset-x-0 bottom-0 top-20 z-40 overflow-y-auto overscroll-contain bg-paper lg:hidden">
+        <div id="mobile-menu" className="fixed inset-x-0 bottom-0 top-20 z-40 overflow-y-auto overscroll-contain bg-paper xl:hidden">
           <nav aria-label="Mobile" className="mx-auto flex max-w-[1280px] flex-col px-5 pb-12 pt-4 sm:px-8">
             {navLinks.map((link) =>
               link.label === "Services" ? (

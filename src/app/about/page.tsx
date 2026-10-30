@@ -1,4 +1,5 @@
 import { Mail, MapPin, Phone, Smartphone } from "lucide-react";
+import { Team } from "@/components/about/Team";
 import { PageHero } from "@/components/ui/PageHero";
 import { Section } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
@@ -37,6 +38,8 @@ export default function AboutPage() {
           </Reveal>
         </div>
       </Section>
+
+      <Team />
 
       {/* Vision & mission */}
       <Section tone="ink" labelledBy="vm-title">

@@ -31,14 +31,6 @@ export const whyMalenga = [
   { title: "Professional service", description: "Clear communication and respect for your time." },
 ] as const;
 
-/** Proposed engagement journey as presented on the website. */
-export const approach = [
-  { step: "01", title: "Discovery", description: "We listen and learn your business." },
-  { step: "02", title: "Strategy", description: "We agree a practical plan and scope." },
-  { step: "03", title: "Implementation", description: "We put the plan into practice with your team." },
-  { step: "04", title: "Support", description: "We refine, train and support as you go." },
-] as const;
-
 /* Wording below is derived from the brief and motto; confirm against the
    official company profile before removing the draft labels. */
 export const aboutDraft = {
