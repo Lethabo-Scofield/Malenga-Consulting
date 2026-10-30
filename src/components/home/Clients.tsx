@@ -8,11 +8,11 @@ export function Clients() {
     <Section tone="stone" labelledBy="clients-title" className="!py-16 sm:!py-24">
       <Reveal>
         <h2 id="clients-title" className="eyebrow">Businesses we&rsquo;ve worked with</h2>
-        <ul className="mt-8 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+        <ul className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-5">
           {clients.map((c) => (
             <li
               key={c.name}
-              className="flex h-32 items-center justify-center border border-line bg-white p-5 sm:h-40 sm:p-7"
+              className="flex h-32 items-center justify-center border border-line bg-white p-5 max-sm:last:col-span-2 sm:h-36 sm:p-6"
             >
               {c.logo ? (
                 <Image
@@ -20,7 +20,7 @@ export function Clients() {
                   alt={c.name}
                   width={c.logo.width}
                   height={c.logo.height}
-                  sizes="(min-width: 1024px) 240px, 45vw"
+                  sizes="(min-width: 1024px) 200px, 45vw"
                   className="h-auto max-h-full w-auto max-w-full object-contain"
                 />
               ) : (

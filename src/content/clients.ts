@@ -13,4 +13,5 @@ export const clients: Client[] = [
   { name: "FreightShift International Logistics", logo: { src: "/clients/freightshift.png", width: 640, height: 99 } },
   { name: "Kuhlula Legacy", logo: { src: "/clients/kuhlula-legacy.png", width: 440, height: 440 } },
   { name: "Mvapi Logistics", logo: { src: "/clients/mvapi-logistics.png", width: 640, height: 256 } },
+  { name: "Blackroid", logo: { src: "/clients/blackroid.png", width: 640, height: 121 } },
 ];
